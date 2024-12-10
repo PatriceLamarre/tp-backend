@@ -1,11 +1,11 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
 
-const dbConnection = new Sequelize('proyecto-final', 'root', '', 
+const dbConnection = new Sequelize(process.env.MYSQL, 
     {
-        host: 'localhost',
         dialect: 'mysql',
-        port: 3306
+        logging: false
     }
 )
 
