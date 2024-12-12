@@ -15,12 +15,11 @@ const carritoroutes= require('./routes/carritoRoute');
 const pedidoroutes= require('./routes/pedidoRoute');
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use('/api/login',loginroutes)
 app.use('/api/proveedor',proveedorroutes)
 app.use('/uploads', express.static('uploads'));
-//app.use('/api/cliente',clienteroutes)
 app.use('/api/producto',productoroutes)
 app.use('/api/carrito',carritoroutes)
 app.use('/api/pedido',pedidoroutes)
