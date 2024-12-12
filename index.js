@@ -1,6 +1,8 @@
 const express= require('express');
 const app= express();
 const cors = require('cors');
+require('dotenv').config();
+const {dbConnection}= require("./config/dbConnection")
 
 
 app.use(cors({
@@ -18,7 +20,7 @@ const carritoroutes= require('./routes/carritoRoute');
 const pedidoroutes= require('./routes/pedidoRoute');
 
 
-const PORT = process.env.PORT || 3001;
+//const PORT = process.env.PORT || 3001;
 
 app.use('/api/login',loginroutes)
 app.use('/api/proveedor',proveedorroutes)
@@ -36,6 +38,6 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   })
 
-app.listen(PORT,() =>{
-    console.log('listening on port '+PORT);
+app.listen(process.env.PORT,() =>{
+    console.log(`listening on port ${process.env.PORT}`)
 });
