@@ -2,7 +2,10 @@ const express= require('express');
 const app= express();
 const cors = require('cors');
 
-app.use(cors());
+
+app.use(cors({
+  origin: "https://proyecto-final-4483a.web.app"
+}));
 
 
 app.use(express.json());
