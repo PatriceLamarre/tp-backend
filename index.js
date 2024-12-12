@@ -5,9 +5,7 @@ require('dotenv').config();
 const {dbConnection}= require("./config/dbConnection")
 
 
-app.use(cors({
-  origin: "https://proyecto-final-4483a.web.app"
-}));
+app.use(cors());
 
 
 app.use(express.json());
@@ -20,7 +18,7 @@ const carritoroutes= require('./routes/carritoRoute');
 const pedidoroutes= require('./routes/pedidoRoute');
 
 
-//const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.use('/api/login',loginroutes)
 app.use('/api/proveedor',proveedorroutes)
@@ -31,13 +29,14 @@ app.use('/api/pedido',pedidoroutes)
 
 let admin = require("firebase-admin")
 
-var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
+var serviceAccount = require("./proyecto-final-4483a-firebase-adminsdk-qlnvs-2321e3b964.json")
 
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   })
 
-app.listen(process.env.PORT,() =>{
-    console.log(`listening on port ${process.env.PORT}`)
+app.listen(PORT,() =>{
+    console.log(`listening on port ${PORT}`)
 });

@@ -13,13 +13,15 @@ const getAllCartItems = async (req, res = response) => {
 }
 
 const createCartList = async (req, res = response) => {
-    const { cantidad, talle, precio_unidad, precio_cantidad, productoId} = req.body;
+    
     try {
+      const { cantidad, talle, precio_unidad, precio_cantidad, productoId} = req.body;
 
       const carrito = await Carrito.create({cantidad, talle, precio_unidad, precio_cantidad, productoId });
       res.status(201).json(carrito);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      res.status(500).send("Error al agregar al carrito");
+      //res.status(400).json({ error: error.message });
     }
 
 }
