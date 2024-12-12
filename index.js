@@ -29,7 +29,7 @@ app.use('/api/pedido',pedidoroutes)
 
 let admin = require("firebase-admin")
 
-var serviceAccount = require("./proyecto-final-4483a-firebase-adminsdk-qlnvs-2321e3b964.json")
+var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 
 
 admin.initializeApp({
